@@ -1,9 +1,9 @@
 version: 0.0
 os: linux
 files:
-  - source: /index.html
+  - source: /website.war
     destination: /tmp/codedeploy-deployment-staging-area/
-  - source: /scripts/changePort.sh
+  - source: /scripts1/changePort.sh
     destination: /tmp/codedeploy-deployment-staging-area/
 hooks:
   ApplicationStop:
@@ -11,11 +11,11 @@ hooks:
       timeout: 300
   BeforeInstall:
     - location: scripts1/install_dependencies
-    - location: scripts/changePort.sh
+    - location: scripts1/changePort.sh
       timeout: 300
   ApplicationStart:
     - location: scripts1/write_codedeploy_config.sh
-    - location: scripts/start_application
+    - location: scripts1/start_application
       timeout: 300
   ValidateService:
     - location: scripts1/basic_health_check.sh
